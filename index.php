@@ -3,7 +3,7 @@
  * Plugin Name: Lockdown Toolkit by VegasGeek
  * Plugin URI: https://vegasgeek.com
  * Description: A suite of tools to harden and protect your WordPress site
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: VegasGeek
  * Author URI: https://vegasgeek.com
  * License: GPL v2 or later
@@ -37,7 +37,7 @@ function lockdown_toolkit_init() {
 	Lockdown_Toolkit_Hidden_Login::init();
 }
 
-// Hook initialization to WordPress
+// Hook initialization to WordPress.
 add_action( 'plugins_loaded', 'lockdown_toolkit_init' );
 
 /**
@@ -54,3 +54,16 @@ function lockdown_toolkit_on_activation() {
 }
 
 register_activation_hook( __FILE__, 'lockdown_toolkit_on_activation' );
+
+// Check for plugin updates.
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/vegasgeek/lockdown-toolkit/',
+	__FILE__,
+	'lockdown-toolkit'
+);
+
+// Set the branch that contains the stable release.
+$myUpdateChecker->setBranch( 'main' );
