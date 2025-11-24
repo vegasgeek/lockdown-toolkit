@@ -60,7 +60,8 @@ class REST_Hider_REST_Filter {
 	 * @return array
 	 */
 	public static function get_hidden_endpoints() {
-		return get_option( self::HIDDEN_ENDPOINTS_OPTION_KEY, array() );
+		$hidden_endpoints = get_option( self::HIDDEN_ENDPOINTS_OPTION_KEY, array() );
+		return apply_filters( 'lockdown_toolkit_hidden_endpoints', $hidden_endpoints );
 	}
 
 	/**
