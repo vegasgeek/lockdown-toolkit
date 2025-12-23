@@ -126,3 +126,6 @@ For issues, feature requests, or feedback, please contact the plugin author.
 - REST endpoint hiding with automatic hiding of `/wp/v2/users` and `/wp/v2/media`
 - Custom hidden login page functionality
 - Settings integration with WordPress General Settings page
+
+### Version 1.0.4
+- Handle the password reset flow

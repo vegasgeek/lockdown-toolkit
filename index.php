@@ -3,7 +3,7 @@
  * Plugin Name: Lockdown Toolkit by VegasGeek
  * Plugin URI: https://vegasgeek.com
  * Description: A suite of tools to harden and protect your WordPress site
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: VegasGeek
  * Author URI: https://vegasgeek.com
  * License: GPL v2 or later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Define plugin constants.
 define( 'LOCKDOWN_TOOLKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LOCKDOWN_TOOLKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LOCKDOWN_TOOLKIT_VERSION', '1.0.1' );
+define( 'LOCKDOWN_TOOLKIT_VERSION', '1.0.4' );
 
 // Include necessary files.
 require_once LOCKDOWN_TOOLKIT_PLUGIN_DIR . 'includes/class-rest-filter.php';
