@@ -121,11 +121,15 @@ For issues, feature requests, or feedback, please contact the plugin author.
 
 ## Changelog
 
+### Version 1.0.5
+- Initialize variables to try and stop error log entries
+
+### Version 1.0.4
+- Handle the password reset flow
+
 ### Version 1.0.0
 - Initial release
 - REST endpoint hiding with automatic hiding of `/wp/v2/users` and `/wp/v2/media`
 - Custom hidden login page functionality
 - Settings integration with WordPress General Settings page
 
-### Version 1.0.4
-- Handle the password reset flow

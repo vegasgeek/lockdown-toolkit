@@ -302,6 +302,13 @@ class Lockdown_Toolkit_Hidden_Login {
 			// Load the WordPress login page using the standard login template
 			// Do NOT modify $_SERVER['REQUEST_URI'] - WordPress needs the actual path for cookie handling
 			// Note: wp-login.php will handle redirecting logged-in users appropriately
+
+			// Initialize variables that wp-login.php expects to prevent PHP warnings
+			// These can be undefined when bots/automated tools make malformed requests
+			global $user_login, $error;
+			$user_login = '';
+			$error      = '';
+
 			require_once ABSPATH . 'wp-login.php';
 			exit;
 		}
