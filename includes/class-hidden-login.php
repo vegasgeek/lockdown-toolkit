@@ -504,7 +504,7 @@ class Lockdown_Toolkit_Hidden_Login {
 				|| strpos( rawurldecode( $_SERVER['REQUEST_URI'] ), 'wp-activate' ) !== false
 			)
 		) {
-			wp_die( __( 'This feature is not enabled.', 'lockdown-toolkit' ) );
+			wp_die( __( 'This feature is not enabled.', 'lockdown-toolkit' ), '', array( 'response' => 403 ) );
 		}
 	}
 
@@ -539,7 +539,7 @@ class Lockdown_Toolkit_Hidden_Login {
 			$key        = sanitize_text_field( wp_unslash( $_GET['confirm_key'] ) );
 			$result     = wp_validate_user_request_key( $request_id, $key );
 			if ( ! is_wp_error( $result ) ) {
-				wp_redirect( add_query_arg(
+				wp_safe_redirect( add_query_arg(
 					array(
 						'action'      => 'confirmaction',
 						'request_id'  => $request_id,
