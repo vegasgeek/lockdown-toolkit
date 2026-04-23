@@ -236,12 +236,12 @@ class Lockdown_Toolkit_Hidden_Login {
 	 * @param string|null $scheme
 	 * @return string|null
 	 */
-	public static function login_url( $scheme = null ) {
+	private static function login_url( $scheme = null ) {
 		$slug = self::login_slug();
 		if ( empty( $slug ) ) {
 			return null;
 		}
-		$base = apply_filters( 'lockdown_toolkit_login_home_url', home_url( '/', $scheme ) );
+		$base = home_url( '/', $scheme );
 		if ( get_option( 'permalink_structure' ) ) {
 			return self::maybe_slash( $base . $slug );
 		}
@@ -254,7 +254,7 @@ class Lockdown_Toolkit_Hidden_Login {
 	 * @param string|null $scheme
 	 * @return string
 	 */
-	public static function redirect_url( $scheme = null ) {
+	private static function redirect_url( $scheme = null ) {
 		$slug = self::redirect_slug();
 		if ( empty( $slug ) ) {
 			return home_url( '/', $scheme );
