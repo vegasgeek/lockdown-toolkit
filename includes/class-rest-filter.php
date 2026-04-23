@@ -45,7 +45,7 @@ class REST_Hider_REST_Filter {
 		// Check if this endpoint is hidden.
 		if ( isset( $hidden_endpoints[ $requested_route ] ) && $hidden_endpoints[ $requested_route ] ) {
 			return new WP_Error(
-				'rest_hider_forbidden',
+				'forbidden',
 				__( 'This REST endpoint is not available.', 'resthider' ),
 				array( 'status' => 403 )
 			);
