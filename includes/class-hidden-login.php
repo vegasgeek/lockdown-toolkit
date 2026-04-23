@@ -80,6 +80,7 @@ class Lockdown_Toolkit_Hidden_Login {
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'show_in_rest'      => false,
+			'default'           => 1,
 		) );
 	}
 
@@ -183,8 +184,8 @@ class Lockdown_Toolkit_Hidden_Login {
 			return '';
 		}
 		$value = trim( $value, '/' );
-		$value = strtok( $value, '?' );
-		$value = strtok( $value, '#' );
+		$value = explode( '?', $value )[0];
+		$value = explode( '#', $value )[0];
 		return sanitize_text_field( $value );
 	}
 
@@ -347,7 +348,7 @@ class Lockdown_Toolkit_Hidden_Login {
 			) {
 				wp_safe_redirect(
 					self::maybe_slash( self::login_url() )
-					. ( ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' )
+					. ( ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) ) : '' )
 				);
 				die();
 			}
@@ -483,7 +484,7 @@ class Lockdown_Toolkit_Hidden_Login {
 	public static function setup_theme() {
 		global $pagenow;
 		if ( ! is_user_logged_in() && 'customize.php' === $pagenow ) {
-			wp_die( __( 'This has been disabled.', 'lockdown-toolkit' ), 403 );
+			wp_die( __( 'This has been disabled.', 'lockdown-toolkit' ), '', array( 'response' => 403 ) );
 		}
 	}
 
